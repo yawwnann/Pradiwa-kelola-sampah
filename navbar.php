@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* Mengatur efek underline animasi */
         .nav-link {
@@ -23,7 +24,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: #16a34a;
+            background-color: rgb(77, 158, 107);
             /* Warna hijau */
             transform: scaleX(0);
             transform-origin: bottom right;

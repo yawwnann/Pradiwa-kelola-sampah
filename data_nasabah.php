@@ -57,7 +57,7 @@ while ($row = $result->fetch_assoc()) {
                     <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(1)">Nama</th>
                     <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(2)">NIK</th>
                     <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(3)">Alamat</th>
-                    <th class="w-1/4 p-4 text-left">Actions</th>
+                    <th class="w-1/4 p-4 text-left">Aksic</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700" id="nasabah-body">
@@ -69,9 +69,9 @@ while ($row = $result->fetch_assoc()) {
                     echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['nama']) . "</td>";
                     echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['nik']) . "</td>";
                     echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['alamat']) . "</td>";
-                    echo "<td class='w-1/4 p-4 text-center'>
-                            <button onclick='editData(" . $row['id'] . ")' class='p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700'>Edit</button>
-                            <button onclick='deleteData(" . $row['id'] . ")' class='p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 ml-2'>Hapus</button>
+                    echo "<td class='w-1/4 p-4 text-left'>
+                            <button onclick='editData(" . $row['id'] . ")' class='text-teal-600  mr-6 hover:text-teal-800'>Edit</button>
+                            <button onclick='deleteData(" . $row['id'] . ")' class='text-red-600 hover:text-red-800'>Hapus</button>
                           </td>";
                     echo "</tr>";
                     $id_counter++;
