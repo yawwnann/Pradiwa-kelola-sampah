@@ -1,0 +1,604 @@
+{
+  "users": {
+    "user_001": {
+      "nama": "MB SUSI",
+      "nik": "000111082018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_002": {
+      "nama": "MB Yani",
+      "nik": "000211082018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_003": {
+      "nama": "Ibu Sutarwati",
+      "nik": "000411082018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_004": {
+      "nama": "Bapak Muzaki Al Amin",
+      "nik": "000511082018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_005": {
+      "nama": "Bapak Nur Ismail",
+      "nik": "000611082018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_006": {
+      "nama": "rey",
+      "nik": "0001-11-08-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_007": {
+      "nama": "MB Rochanah",
+      "nik": "0003-11-08-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_008": {
+      "nama": "ksahfa",
+      "nik": "09876543456",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_009": {
+      "nama": "Ibu Siti Baedah",
+      "nik": "0008-11-08-2018",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_010": {
+      "nama": "Ibu Rohvania",
+      "nik": "0009-11-08-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_011": {
+      "nama": "Ibu Siti Zulaikhah",
+      "nik": "0010-11-08-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_012": {
+      "nama": "Ibu Sri Untari Umiatun",
+      "nik": "0011-11-08-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_013": {
+      "nama": "Ibu Semilah",
+      "nik": "0012-11-08-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_014": {
+      "nama": "Ibu Eko Wawan",
+      "nik": "0013-11-08-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_015": {
+      "nama": "Ibu Sri Lestari",
+      "nik": "0014-11-08-2018",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_016": {
+      "nama": "Bapak Sabar Sutrisno",
+      "nik": "0015-11-08-2018",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_017": {
+      "nama": "Ibu Sulasih",
+      "nik": "0016-11-08-2018",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_018": {
+      "nama": "Bapak Sedyo Hartono",
+      "nik": "0017-11-08-2018",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_019": {
+      "nama": "Kas BS Pelangi",
+      "nik": "0018-11-08-2018",
+      "alamat": "Notoprajan RW 07"
+    },
+    "user_020": {
+      "nama": "Bapak Hartono",
+      "nik": "0019-11-08-2018",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_021": {
+      "nama": "Ibu Fitri Purwaningsih",
+      "nik": "0020-11-08-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_022": {
+      "nama": "Ibu Sri Yati",
+      "nik": "0021-11-08-2018",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_023": {
+      "nama": "Ibu Ekayati",
+      "nik": "0022-11-08-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_024": {
+      "nama": "Ibu Suharyati",
+      "nik": "0023-01-09-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_025": {
+      "nama": "Ibu Dede Erni",
+      "nik": "0024-01-09-2018",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_026": {
+      "nama": "Ibu Hartini",
+      "nik": "0025-01-09-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_027": {
+      "nama": "Bapak Arif GASTRAD",
+      "nik": "0026-01-09-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_028": {
+      "nama": "Bapak Supryatna",
+      "nik": "0027-01-09-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_029": {
+      "nama": "Ibu Lusmawati",
+      "nik": "0028-01-09-2018",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_030": {
+      "nama": "Ibu Ngatijan",
+      "nik": "0029-01-09-2018",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_031": {
+      "nama": "Ibu Wahyuni",
+      "nik": "0030-01-08-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_032": {
+      "nama": "Jalu",
+      "nik": "0031-15-09-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_033": {
+      "nama": "Yuan",
+      "nik": "0032-15-09-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_034": {
+      "nama": "Ibu Suwarsi",
+      "nik": "0033-15-09-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_035": {
+      "nama": "Ibu Supiyah",
+      "nik": "0034-15-09-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_036": {
+      "nama": "Ibu Rani",
+      "nik": "0035-15-09-2018",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_037": {
+      "nama": "Ibu Zulfa",
+      "nik": "0037-3-11-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_038": {
+      "nama": "Ibu Suratmi",
+      "nik": "0038-3-11-2018",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_039": {
+      "nama": "Ibu Jujuk",
+      "nik": "0039-3-11-2018",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_040": {
+      "nama": "Ibu Suwondo",
+      "nik": "0040-17-11-2018",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_041": {
+      "nama": "Bapak Majid",
+      "nik": "0041-22-12-2018",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_042": {
+      "nama": "Ibu Sri Rubiyanti",
+      "nik": "0042-21-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_043": {
+      "nama": "Ibu Mursiyem",
+      "nik": "0043-21-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_044": {
+      "nama": "Ibu Rukmini",
+      "nik": "0044-21-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_045": {
+      "nama": "Ibu Sri Wati",
+      "nik": "0045-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_046": {
+      "nama": "Ibu Susilowati",
+      "nik": "0046-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_047": {
+      "nama": "Ibu Dwi Hartati",
+      "nik": "0047-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_048": {
+      "nama": "Ibu Kurniawati",
+      "nik": "0048-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_049": {
+      "nama": "Bapak Sulistyo",
+      "nik": "0049-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_050": {
+      "nama": "Ibu Indah",
+      "nik": "0050-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_051": {
+      "nama": "Bapak Hartono",
+      "nik": "0051-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_052": {
+      "nama": "Ibu Aisyah",
+      "nik": "0052-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_053": {
+      "nama": "Bapak Sumanto",
+      "nik": "0053-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_054": {
+      "nama": "Ibu Siti Nur",
+      "nik": "0054-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_055": {
+      "nama": "Bapak Yudi",
+      "nik": "0055-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_056": {
+      "nama": "Ibu Lestari",
+      "nik": "0056-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_057": {
+      "nama": "Bapak Wahyudi",
+      "nik": "0057-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_058": {
+      "nama": "Ibu Rosita",
+      "nik": "0058-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_059": {
+      "nama": "Bapak Karto",
+      "nik": "0059-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_060": {
+      "nama": "Ibu Mariani",
+      "nik": "0060-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_061": {
+      "nama": "Ibu Yuliana",
+      "nik": "0061-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_062": {
+      "nama": "Bapak Taufik",
+      "nik": "0062-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_063": {
+      "nama": "Ibu Endang",
+      "nik": "0063-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_064": {
+      "nama": "Bapak Ari",
+      "nik": "0064-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_065": {
+      "nama": "Ibu Ika",
+      "nik": "0065-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_066": {
+      "nama": "Bapak Narto",
+      "nik": "0066-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_067": {
+      "nama": "Ibu Dina",
+      "nik": "0067-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_068": {
+      "nama": "Bapak Hari",
+      "nik": "0068-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_069": {
+      "nama": "Ibu Rini",
+      "nik": "0069-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_070": {
+      "nama": "Bapak Rudi",
+      "nik": "0070-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_071": {
+      "nama": "Ibu Tina",
+      "nik": "0071-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_072": {
+      "nama": "Bapak Agung",
+      "nik": "0072-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_073": {
+      "nama": "Ibu Diah",
+      "nik": "0073-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_074": {
+      "nama": "Bapak Joko",
+      "nik": "0074-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_075": {
+      "nama": "Ibu Leni",
+      "nik": "0075-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_076": {
+      "nama": "Bapak Yanto",
+      "nik": "0076-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_077": {
+      "nama": "Ibu Ningsih",
+      "nik": "0077-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_078": {
+      "nama": "Bapak Wiji",
+      "nik": "0078-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_079": {
+      "nama": "Ibu Purnama",
+      "nik": "0079-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_080": {
+      "nama": "Bapak Agus",
+      "nik": "0080-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_081": {
+      "nama": "Ibu Sari",
+      "nik": "0081-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_082": {
+      "nama": "Bapak Eko",
+      "nik": "0082-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_083": {
+      "nama": "Ibu Yuni",
+      "nik": "0083-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_084": {
+      "nama": "Bapak Tono",
+      "nik": "0084-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_085": {
+      "nama": "Ibu Fifi",
+      "nik": "0085-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_086": {
+      "nama": "Bapak Miko",
+      "nik": "0086-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_087": {
+      "nama": "Ibu Prita",
+      "nik": "0087-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_088": {
+      "nama": "Bapak Dedi",
+      "nik": "0088-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_089": {
+      "nama": "Ibu Vina",
+      "nik": "0089-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_090": {
+      "nama": "Bapak Kurnia",
+      "nik": "0090-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_091": {
+      "nama": "Ibu Nadia",
+      "nik": "0091-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_092": {
+      "nama": "Bapak Arif",
+      "nik": "0092-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_093": {
+      "nama": "Ibu Lala",
+      "nik": "0093-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_094": {
+      "nama": "Bapak Budi",
+      "nik": "0094-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_095": {
+      "nama": "Ibu Dina",
+      "nik": "0095-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_096": {
+      "nama": "Bapak Andi",
+      "nik": "0096-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_097": {
+      "nama": "Ibu Mila",
+      "nik": "0097-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_098": {
+      "nama": "Bapak Hadi",
+      "nik": "0098-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_099": {
+      "nama": "Ibu Rina",
+      "nik": "0099-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_100": {
+      "nama": "Bapak Rachmat",
+      "nik": "0100-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_101": {
+      "nama": "Ibu Leni",
+      "nik": "0101-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_102": {
+      "nama": "Bapak Zain",
+      "nik": "0102-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_103": {
+      "nama": "Ibu Fera",
+      "nik": "0103-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_104": {
+      "nama": "Bapak Ronny",
+      "nik": "0104-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_105": {
+      "nama": "Ibu Rina",
+      "nik": "0105-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_106": {
+      "nama": "Bapak Indra",
+      "nik": "0106-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_107": {
+      "nama": "Ibu Lita",
+      "nik": "0107-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_108": {
+      "nama": "Bapak Toto",
+      "nik": "0108-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_109": {
+      "nama": "Ibu Mega",
+      "nik": "0109-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_110": {
+      "nama": "Bapak Iwan",
+      "nik": "0110-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_111": {
+      "nama": "Ibu Ratna",
+      "nik": "0111-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_112": {
+      "nama": "Bapak Yoga",
+      "nik": "0112-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_113": {
+      "nama": "Ibu Dian",
+      "nik": "0113-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_114": {
+      "nama": "Bapak Dedi",
+      "nik": "0114-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_115": {
+      "nama": "Ibu Sinta",
+      "nik": "0115-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_116": {
+      "nama": "Bapak Aris",
+      "nik": "0116-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    },
+    "user_117": {
+      "nama": "Ibu Titi",
+      "nik": "0117-22-06-2019",
+      "alamat": "Notoprajan RT 41"
+    },
+    "user_118": {
+      "nama": "Bapak Joko",
+      "nik": "0118-22-06-2019",
+      "alamat": "Notoprajan RT 44"
+    },
+    "user_119": {
+      "nama": "Ibu Wati",
+      "nik": "0119-22-06-2019",
+      "alamat": "Notoprajan RT 42"
+    },
+    "user_120": {
+      "nama": "Bapak Iwan",
+      "nik": "0120-22-06-2019",
+      "alamat": "Notoprajan RT 43"
+    }
+  }
+}
