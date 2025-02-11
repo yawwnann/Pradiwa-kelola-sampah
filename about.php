@@ -3,7 +3,7 @@ include 'navbar.php';
 ?>
 
 
-<div class="container mx-auto px-6 py-12">
+<div class="container mx-auto px-6 py-12 mt-20">
     <!-- Section Gambar dan Deskripsi -->
     <div class="flex flex-col md:flex-row items-center justify-between">
 

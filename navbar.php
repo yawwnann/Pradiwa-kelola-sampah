@@ -6,12 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pradiwa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body {
-            margin: 0;
-            padding: 0;
+        /* Mengatur efek underline animasi */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #16a34a;
+            /* Warna hijau */
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Menandai link aktif dengan garis bawah */
+        .nav-link.active::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .nav-link:hover {
+            color: #16a34a;
+            /* Mengubah warna teks saat hover */
         }
     </style>
 </head>
@@ -23,26 +55,20 @@
         <div class="container mx-auto flex justify-between items-center">
             <!-- Logo dan Teks -->
             <div class="flex items-center space-x-2">
-                <span class="font-bold text-xl">Pradiwa</span>
+                <span class="font-bold text-xl text-teal-600">Pradiwa</span>
             </div>
 
             <!-- Menu Navigasi -->
             <div class="flex space-x-8">
-                <a href="dashboard.php"
-                    class="text-lg font-regular text-black hover:text-green-300 transition duration-300 ease-in-out">Dashboard</a>
-                <a href="about.php"
-                    class="text-lg font-regular text-black hover:text-green-300 transition duration-300 ease-in-out">Tentang</a>
-                <a href="input_sampah.php"
-                    class="text-lg font-regular text-black hover:text-green-300 transition duration-300 ease-in-out">Input
+                <a href="dashboard.php" id="dashboard" class="text-lg font-regular text-black nav-link">Dashboard</a>
+                <a href="about.php" id="about" class="text-lg font-regular text-black nav-link">Tentang</a>
+                <a href="input_sampah.php" id="input_sampah" class="text-lg font-regular text-black nav-link">Input
                     Sampah</a>
-                <a href="data_nasabah.php"
-                    class="text-lg font-regular text-black hover:text-green-300 transition duration-300 ease-in-out">Data
+                <a href="data_nasabah.php" id="data_nasabah" class="text-lg font-regular text-black nav-link">Data
                     Nasabah</a>
-                <a href="data_sampah.php"
-                    class="text-lg font-regular text-black hover:text-green-300 transition duration-300 ease-in-out">Data
+                <a href="data_sampah.php" id="data_sampah" class="text-lg font-regular text-black nav-link">Data
                     Sampah</a>
-                <a href="statistik.php"
-                    class="text-lg font-regular text-black hover:text-green-300 transition duration-300 ease-in-out">Data
+                <a href="statistik.php" id="statistik" class="text-lg font-regular text-black nav-link">Data
                     Statistik</a>
             </div>
 
@@ -50,13 +76,27 @@
             <div class="flex items-center space-x-4">
                 <span class="text-black text-lg">Admin</span>
                 <a href="logout.php"
-                    class="flex items-center space-x-2 text-black hover:text-green-300 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v7m0 0l3-3m-3 3l-3-3m9 10H3" />
-                    </svg>
-                    <span>Logout</span>
+                    class="flex items-center space-x-2 text-black hover:text-red-600 transition duration-300 ease-in-out">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </a>
             </div>
         </div>
     </nav>
+
+    <script>
+        // Mengaktifkan item navbar berdasarkan halaman aktif
+        window.addEventListener('DOMContentLoaded',(event) => {
+            // Mendapatkan URL halaman
+            const currentPath=window.location.pathname;
+
+            // Cek setiap link navbar dan beri kelas 'active' jika link sesuai dengan halaman aktif
+            const navbarLinks=document.querySelectorAll('.nav-link');
+            navbarLinks.forEach(link => {
+                if(currentPath.includes(link.getAttribute('href'))) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>

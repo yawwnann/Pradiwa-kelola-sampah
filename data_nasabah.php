@@ -18,10 +18,11 @@ while ($row = $result->fetch_assoc()) {
 
     <!-- Search & Filter & Tambah Nasabah -->
     <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
-        <div class="relative w-full md:w-1/3 z-0">
+        <div class="relative w-full md:w-1/3 z-0 flex">
+            <i
+                class="fa-solid fa-magnifying-glass text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
             <input type="text" id="search" placeholder="Cari Nama / NIK..."
                 class="w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
-            <span class="absolute left-3 top-2.5 text-gray-400"><i data-lucide="search"></i></span>
         </div>
 
         <div class="text-right flex gap-4">
@@ -56,17 +57,22 @@ while ($row = $result->fetch_assoc()) {
                     <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(1)">Nama</th>
                     <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(2)">NIK</th>
                     <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(3)">Alamat</th>
+                    <th class="w-1/4 p-4 text-left">Actions</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700" id="nasabah-body">
                 <?php
                 $id_counter = 1;
                 foreach ($nasabah_data as $row) {
-                    echo "<tr class='border-b hover:bg-gray-100 transition'>";
+                    echo "<tr class='border-b hover:bg-gray-100 transition' id='nasabah-row-" . $row['id'] . "'>";
                     echo "<td class='w-1/4 p-4'>" . $row['id'] . "</td>";
                     echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['nama']) . "</td>";
                     echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['nik']) . "</td>";
                     echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['alamat']) . "</td>";
+                    echo "<td class='w-1/4 p-4 text-center'>
+                            <button onclick='editData(" . $row['id'] . ")' class='p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700'>Edit</button>
+                            <button onclick='deleteData(" . $row['id'] . ")' class='p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 ml-2'>Hapus</button>
+                          </td>";
                     echo "</tr>";
                     $id_counter++;
                 }
@@ -95,20 +101,119 @@ while ($row = $result->fetch_assoc()) {
         </form>
     </div>
 </div>
-
-<!-- Modal Notifikasi Berhasil -->
-<div id="successModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
-        <h2 class="text-lg font-bold text-green-600 mb-4">Data Berhasil Ditambahkan!</h2>
-        <button onclick="closeSuccessModal()"
-            class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700">OK</button>
+<!-- Modal Edit Nasabah -->
+<div id="editModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+        <h2 class="text-xl font-bold mb-4 text-center">Edit Nasabah</h2>
+        <form id="editNasabahForm">
+            <input type="hidden" id="editId">
+            <input type="text" id="editNama" placeholder="Nama" required
+                class="w-full p-2 border border-gray-300 rounded-lg mb-2">
+            <input type="text" id="editNik" placeholder="NIK" required
+                class="w-full p-2 border border-gray-300 rounded-lg mb-2">
+            <input type="text" id="editAlamat" placeholder="Alamat" required
+                class="w-full p-2 border border-gray-300 rounded-lg mb-4">
+            <div class="flex justify-between">
+                <button type="button" onclick="closeEditModal()"
+                    class="bg-gray-500 text-white p-2 rounded-lg">Batal</button>
+                <button type="submit" class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700">Simpan</button>
+            </div>
+        </form>
     </div>
 </div>
 
-<!-- Simpan data awal ke dalam JavaScript -->
-<script>
-    const originalData=<?php echo json_encode($nasabah_data); ?>;
 
+<script>
+    // Fungsi untuk mencari data
+    document.getElementById("search").addEventListener("keyup",function() {
+        let searchValue=this.value.toLowerCase();
+        let rows=document.querySelectorAll("#nasabah-body tr");
+
+        rows.forEach(row => {
+            let nama=row.cells[1].textContent.toLowerCase();
+            let nik=row.cells[2].textContent.toLowerCase();
+            row.style.display=(nama.includes(searchValue)||nik.includes(searchValue))? "":"none";
+        });
+    });
+
+
+    // Fungsi untuk mengedit data nasabah
+    function editData(id) {
+        // Ambil data nasabah berdasarkan ID
+        let row=document.getElementById('nasabah-row-'+id);
+        let nama=row.cells[1].innerText;
+        let nik=row.cells[2].innerText;
+        let alamat=row.cells[3].innerText;
+
+        // Isi data ke form edit
+        document.getElementById('editId').value=id;
+        document.getElementById('editNama').value=nama;
+        document.getElementById('editNik').value=nik;
+        document.getElementById('editAlamat').value=alamat;
+
+        // Buka modal edit
+        document.getElementById('editModal').classList.remove('hidden');
+    }
+
+    // Fungsi untuk menutup modal edit
+    function closeEditModal() {
+        document.getElementById('editModal').classList.add('hidden');
+    }
+
+    // Menangani submit form edit
+    document.getElementById("editNasabahForm").addEventListener("submit",function(event) {
+        event.preventDefault();
+
+        let id=document.getElementById("editId").value;
+        let nama=document.getElementById("editNama").value;
+        let nik=document.getElementById("editNik").value;
+        let alamat=document.getElementById("editAlamat").value;
+
+        // Mengirim data ke server untuk mengupdate data
+        fetch("compenents/proses_edit_nasabah.php",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `id=${id}&nama=${nama}&nik=${nik}&alamat=${alamat}`
+        })
+            .then(response => response.text())
+            .then(data => {
+                // Mengupdate data pada tabel tanpa reload
+                let row=document.getElementById('nasabah-row-'+id);
+                row.cells[1].innerText=nama;
+                row.cells[2].innerText=nik;
+                row.cells[3].innerText=alamat;
+
+                // Menutup modal edit
+                closeEditModal();
+            });
+    });
+
+
+    // Fungsi untuk menghapus data
+    function deleteData(id) {
+        if(confirm("Yakin ingin menghapus data?")) {
+            // Mengirim permintaan ke server untuk menghapus data
+            fetch("compenents/proses_hapus_nasabah.php",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `id=${id}`
+            })
+                .then(response => response.text())
+                .then(data => {
+                    // Menghapus baris tabel setelah berhasil
+                    let row=document.getElementById('nasabah-row-'+id);
+                    row.remove();
+                });
+        }
+    }
+
+
+</script>
+<script>
     // Fungsi untuk membuka modal
     function openModal() {
         document.getElementById("modal").classList.remove("hidden");
@@ -119,12 +224,19 @@ while ($row = $result->fetch_assoc()) {
         document.getElementById("modal").classList.add("hidden");
     }
 
-    // Fungsi untuk menutup modal sukses
-    function closeSuccessModal() {
-        document.getElementById("successModal").classList.add("hidden");
-    }
+    // Fungsi untuk mencari data
+    document.getElementById("search").addEventListener("keyup",function() {
+        let searchValue=this.value.toLowerCase();
+        let rows=document.querySelectorAll("#nasabah-body tr");
 
-    // Menangani submit form
+        rows.forEach(row => {
+            let nama=row.cells[1].textContent.toLowerCase();
+            let nik=row.cells[2].textContent.toLowerCase();
+            row.style.display=(nama.includes(searchValue)||nik.includes(searchValue))? "":"none";
+        });
+    });
+
+    // Fungsi untuk menambah data nasabah
     document.getElementById("addNasabahForm").addEventListener("submit",function(event) {
         event.preventDefault();
 
@@ -139,13 +251,7 @@ while ($row = $result->fetch_assoc()) {
         })
             .then(response => response.text())
             .then(data => {
-                // Menutup modal form
                 closeModal();
-
-                // Menampilkan modal sukses
-                document.getElementById("successModal").classList.remove("hidden");
-
-                // Menambahkan data baru ke tabel tanpa reload
                 let tableBody=document.getElementById("nasabah-body");
                 let newRow=document.createElement("tr");
                 newRow.classList.add("border-b","hover:bg-gray-100","transition");
@@ -154,33 +260,17 @@ while ($row = $result->fetch_assoc()) {
                 <td class='w-1/4 p-4'>${nama}</td>
                 <td class='w-1/4 p-4'>${nik}</td>
                 <td class='w-1/4 p-4'>${alamat}</td>
+                <td class='w-1/4 p-4 text-center'>
+                    <button class='p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700'>Edit</button>
+                    <button class='p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 ml-2'>Hapus</button>
+                </td>
             `;
                 tableBody.appendChild(newRow);
             });
     });
 
-    // Fungsi untuk mengembalikan tabel ke data awal
-    function resetTable() {
-        let tableBody=document.getElementById("nasabah-body");
-        tableBody.innerHTML=""; // Kosongkan tabel
 
-        // Tambahkan kembali data awal
-        originalData.forEach((row) => {
-            let tr=document.createElement("tr");
-            tr.classList.add("border-b","hover:bg-gray-100","transition");
-
-            tr.innerHTML=`
-                <td class='w-1/4 p-4'>${row.id}</td>
-                <td class='w-1/4 p-4'>${row.nama}</td>
-                <td class='w-1/4 p-4'>${row.nik}</td>
-                <td class='w-1/4 p-4'>${row.alamat}</td>
-            `;
-
-            tableBody.appendChild(tr);
-        });
-    }
-
-    // Sorting Data berdasarkan filter A-Z, Z-A, Terbaru, Terlama
+    //Sorting Data berdasarkan filter A-Z, Z-A, Terbaru, Terlama
     document.getElementById("filter").addEventListener("change",function() {
         let filterValue=this.value;
         let tableBody=document.getElementById("nasabah-body");
@@ -223,17 +313,5 @@ while ($row = $result->fetch_assoc()) {
         // Perbarui tabel dengan urutan baru
         tableBody.innerHTML=""; // Kosongkan tabel sebelum menambahkan kembali baris yang sudah diurutkan
         rows.forEach(row => tableBody.appendChild(row));
-    });
-
-    // Pencarian Data
-    document.getElementById("search").addEventListener("keyup",function() {
-        let searchValue=this.value.toLowerCase();
-        let rows=document.querySelectorAll("#nasabah-body tr");
-
-        rows.forEach(row => {
-            let nama=row.cells[1].textContent.toLowerCase();
-            let nik=row.cells[2].textContent.toLowerCase();
-            row.style.display=(nama.includes(searchValue)||nik.includes(searchValue))? "":"none";
-        });
     });
 </script>

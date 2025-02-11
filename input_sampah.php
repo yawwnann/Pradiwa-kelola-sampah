@@ -1,7 +1,7 @@
 <?php include('db.php'); ?>
 <?php include 'navbar.php'; ?>
 
-<div class="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-lg mt-20">
+<div class="container mx-auto p-6 bg-white rounded-lg shadow-lg max-w-lg mt-20 mb-20">
     <h1 class="text-2xl font-bold text-center text-teal-600 mb-6">Input Data Sampah</h1>
 
     <form id="sampahForm" method="POST">
@@ -39,7 +39,11 @@
                 <option value="Kertas">Kertas</option>
                 <option value="Logam">Logam</option>
                 <option value="Plastik">Plastik</option>
+                <option value="Kaca">Kaca</option>
+                <option value="Kain">Kain</option>
+                <option value="Oraganik">Oraganik</option>
                 <option value="Lainnya">Lainnya</option>
+
             </select>
         </div>
 

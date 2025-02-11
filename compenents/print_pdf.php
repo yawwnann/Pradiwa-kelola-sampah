@@ -24,7 +24,7 @@ $html = '
         body { font-family: Arial, sans-serif; font-size: 12px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th, td { border: 1px solid black; padding: 8px; text-align: left; }
-        th { background-color: #4CAF50; color: white; }
+        th { background-color: #FFF; color: black; }
     </style>
 </head>
 <body>
