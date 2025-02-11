@@ -1,7 +1,7 @@
 <?php include('db.php');
 include 'navbar.php'; ?>
 
-<div class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
+<div class="container mx-auto p-6 bg-white rounded-lg mt-20 shadow-lg">
     <h1 class="text-3xl font-bold text-center text-teal-600 mb-6">Data Sampah</h1>
 
     <!-- Search & Filter -->
