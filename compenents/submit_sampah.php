@@ -4,8 +4,16 @@ include('../db.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama'];
     $jenis_sampah = $_POST['jenis_sampah'];
+    $kategori = str_replace(array('(', ')'), '', $_POST['kategori']);
+    $jenis_sampah_lainnya = $_POST['jenis_sampah_lainnya'];
     $berat = $_POST['berat'];
+    $harga = $_POST['harga'];
     $tanggal = $_POST['tanggal'];
+
+    // Jika jenis sampah lainnya diisi, ganti dengan inputan pengguna
+    if (!empty($jenis_sampah_lainnya)) {
+        $jenis_sampah = $jenis_sampah_lainnya;
+    }
 
     // Ambil ID nasabah berdasarkan nama
     $stmt = $conn->prepare("SELECT id FROM nasabah WHERE nama = ?");
@@ -16,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 
     if ($nasabah_id) {
-        $stmt = $conn->prepare("INSERT INTO sampah (nasabah_id, jenis_sampah, berat, tanggal) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isds", $nasabah_id, $jenis_sampah, $berat, $tanggal);
+        // Menambahkan data ke database
+        $stmt = $conn->prepare("INSERT INTO sampah (nasabah_id, jenis_sampah, kategori, berat, harga, tanggal) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("issdss", $nasabah_id, $jenis_sampah, $kategori, $berat, $harga, $tanggal);
 
         if ($stmt->execute()) {
             echo "Data berhasil dimasukkan!";
