@@ -67,7 +67,7 @@
                     Sampah</a>
                 <a href="data_nasabah.php" id="data_nasabah" class="text-lg font-regular text-black nav-link">Data
                     Nasabah</a>
-                <a href="data_sampah.php" id="data_sampah" class="text-lg font-regular text-black nav-link">Data
+                <a href="tampil_data_sampah.php" id="data_sampah" class="text-lg font-regular text-black nav-link">Data
                     Sampah</a>
                 <a href="statistik.php" id="statistik" class="text-lg font-regular text-black nav-link">Data
                     Statistik</a>

@@ -2,6 +2,20 @@
 <?php include 'navbar.php'; ?>
 
 <div class="container mx-auto p-6 bg-white rounded-lg shadow-xl max-w-3xl mt-20 mb-20">
+    <style>
+        /* For smooth transitions on input */
+        #inputJenisSampahLainnya {
+            transition: all 0.3s ease;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        #inputJenisSampahLainnya:not(.hidden) {
+            max-height: 100px;
+            opacity: 1;
+        }
+    </style>
     <h1 class="text-3xl font-bold text-center text-teal-600 mb-8">Input Data Sampah</h1>
     <div id="suggestions" class="absolute w-full bg-white border border-gray-300 rounded-lg shadow-md hidden z-[999]">
     </div>
@@ -31,7 +45,6 @@
                 required readonly placeholder="Alamat otomatis"></textarea>
         </div>
 
-
         <!-- Input Jenis Sampah -->
         <div class="relative">
             <label for="jenis_sampah" class="block text-sm font-semibold text-teal-700">Jenis Sampah</label>
@@ -58,7 +71,7 @@
             </select>
         </div>
 
-        <!-- Input Jenis Sampah Lainnya (Akan Ditampilkan Saat Memilih Lainnya) -->
+        <!-- Input Jenis Sampah Lainnya (Will Display When "Lainnya" is Selected) -->
         <div id="inputJenisSampahLainnya" class="hidden mt-4">
             <label for="jenis_sampah_lainnya" class="block text-sm font-semibold text-teal-700">Jenis Sampah
                 (Kategorikan)</label>
@@ -90,7 +103,7 @@
                 class="w-full p-3 border border-teal-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300 placeholder-gray-400">
         </div>
 
-        <!-- Input Tanggal (Secara Default Hari Ini) -->
+        <!-- Input Tanggal (Default to Today) -->
         <div class="relative">
             <label for="tanggal" class="block text-sm font-semibold text-teal-700">Tanggal</label>
             <input type="date" name="tanggal" id="tanggal"
@@ -98,14 +111,14 @@
         </div>
         <!-- Hidden Input Kategori -->
         <input type="hidden" name="kategori" id="kategori">
-        <!-- Tombol Kirim Data -->
+        <!-- Submit Button -->
         <button type="submit"
             class="w-full py-3 bg-teal-600 mt-6 text-white font-semibold rounded-lg hover:bg-teal-700 transition duration-300 transform hover:scale-105">Kirim
             Data</button>
     </form>
 </div>
 
-<!-- MODAL STATUS -->
+<!-- STATUS MODAL -->
 <div id="statusModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden flex items-center justify-center">
     <div class="bg-white rounded-lg shadow-lg p-6 w-96 text-center">
         <h2 id="statusMessage" class="text-lg font-bold text-teal-700"></h2>
@@ -115,16 +128,16 @@
 </div>
 
 <script>
-    // Menghandle perubahan pada dropdown "Jenis Sampah"
+    // Handle changes in "Jenis Sampah" dropdown
     document.getElementById("jenis_sampah").addEventListener("change",function() {
         var selectedOption=this.value;
         var inputJenisSampahLainnya=document.getElementById("inputJenisSampahLainnya");
 
-        // Menampilkan input form untuk jenis sampah lainnya jika "Lainnya" dipilih
+        // Show input form for other types of waste when "Lainnya" is selected
         if(selectedOption.includes("Lainnya")) {
             inputJenisSampahLainnya.classList.remove("hidden");
 
-            // Mengubah label dan placeholder sesuai kategori yang dipilih
+            // Change label and placeholder based on selected category
             if(selectedOption==="Lainnya (Kertas)") {
                 document.querySelector("label[for='jenis_sampah_lainnya']").textContent="Jenis Sampah Kertas Lainnya";
                 document.getElementById("jenis_sampah_lainnya").placeholder="Masukkan jenis sampah Kertas lainnya";
@@ -136,29 +149,28 @@
                 document.getElementById("jenis_sampah_lainnya").placeholder="Masukkan jenis sampah Plastik lainnya";
             }
         } else {
-            // Menyembunyikan input form jika tidak memilih "Lainnya"
+            // Hide input form if "Lainnya" is not selected
             inputJenisSampahLainnya.classList.add("hidden");
         }
     });
 
-    // Set default tanggal ke hari ini
+    // Set the default date to today
     document.addEventListener("DOMContentLoaded",function() {
         let today=new Date();
         let formattedDate=today.toISOString().split('T')[0];
         document.getElementById("tanggal").value=formattedDate;
     });
 
-    // Fungsi untuk menghitung total harga
+    // Calculate total price function
     document.getElementById("berat").addEventListener("input",updateTotalHarga);
     document.getElementById("harga").addEventListener("input",updateTotalHarga);
 
-    // Fungsi untuk menghitung total harga dan format menjadi format Rupiah
     function updateTotalHarga() {
         let hargaPerKg=parseFloat(document.getElementById("harga").value)||0;
         let beratSampah=parseFloat(document.getElementById("berat").value)||0;
         let totalHarga=hargaPerKg*beratSampah;
 
-        // Format angka menjadi format Rupiah
+        // Format number as currency (IDR)
         let formattedHarga=new Intl.NumberFormat('id-ID',{
             style: 'currency',
             currency: 'IDR',
@@ -178,37 +190,7 @@
         window.location.reload();
     }
 
-    document.getElementById("jenis_sampah").addEventListener("change",function() {
-        var selectedOption=this.value;
-        var inputJenisSampahLainnya=document.getElementById("inputJenisSampahLainnya");
-
-        // Mengecek apakah pilihan adalah "Lainnya"
-        if(selectedOption.includes("Lainnya")) {
-            // Menampilkan input form untuk jenis sampah lainnya
-            inputJenisSampahLainnya.classList.remove("hidden");
-
-            // Mengambil kategori dari optgroup label
-            var kategori=this.options[this.selectedIndex].closest("optgroup").label;
-
-            // Menghapus tanda kurung atau karakter tidak perlu dari kategori
-            kategori=kategori.split(" (")[0]; // Mengambil teks sebelum tanda kurung (misal: Kertas, Logam, Plastik)
-
-            // Menyimpan kategori di hidden input
-            document.getElementById("kategori").value=kategori;
-        } else {
-            // Menyembunyikan input form jika tidak memilih "Lainnya"
-            inputJenisSampahLainnya.classList.add("hidden");
-
-            // Mengambil kategori dari optgroup label
-            var kategori=this.options[this.selectedIndex].closest("optgroup").label;
-
-            // Menyimpan kategori di hidden input
-            document.getElementById("kategori").value=kategori;
-        }
-    });
-
-
-
+    // Handle form submission
     document.getElementById("sampahForm").addEventListener("submit",function(event) {
         event.preventDefault();
 
@@ -227,6 +209,7 @@
             });
     });
 
+    // Suggestion for name input
     document.getElementById("nama").addEventListener("keyup",function() {
         let inputNama=this.value.trim();
         let suggestionsBox=document.getElementById("suggestions");
