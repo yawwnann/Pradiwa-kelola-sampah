@@ -3,9 +3,9 @@ include 'navbar.php';
 ?>
 
 
-<div class="container mx-auto px-6 py-12 mt-20">
+<div class="container bg-gradient-to-r from-emerald-600 to-teal-700 mx-auto min-h-screen px-6 py-12 pt-20">
     <!-- Section Gambar dan Deskripsi -->
-    <div class="flex flex-col md:flex-row items-center justify-between">
+    <div class="flex flex-col md:flex-row items-center mt-20 justify-between">
 
         <!-- Gambar -->
         <div class="md:w-1/2 flex justify-center" data-aos="fade-right" data-aos-delay="500">

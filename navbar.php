@@ -49,7 +49,7 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-r from-emerald-600 to-teal-700">
+<body class="bg-gray-300">
     <!-- Navbar -->
     <nav
         class="bg-gray-50 text-black py-3 px-6 h-14 shadow-lg w-full fixed top-0 left-0 z-50 flex justify-between items-center">

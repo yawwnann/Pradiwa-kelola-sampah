@@ -1,7 +1,7 @@
 <?php include('db.php'); ?>
 <?php include 'navbar.php'; ?>
 
-<div class="container mx-auto p-6 bg-white rounded-lg shadow-xl max-w-3xl mt-20 mb-20">
+<div class="container mx-auto p-6 bg-gray-50 rounded-lg shadow-xl max-w-6xl mt-20 mb-20">
     <style>
         /* For smooth transitions on input */
         #inputJenisSampahLainnya {
@@ -17,8 +17,6 @@
         }
     </style>
     <h1 class="text-3xl font-bold text-center text-teal-600 mb-8">Input Data Sampah</h1>
-    <div id="suggestions" class="absolute w-full bg-white border border-gray-300 rounded-lg shadow-md hidden z-[999]">
-    </div>
 
     <form id="sampahForm" method="POST" class="space-y-6">
         <!-- Input Nama -->
@@ -27,6 +25,9 @@
             <input type="text" name="nama" id="nama"
                 class="w-full p-3 border border-teal-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300 placeholder-gray-400"
                 required autocomplete="off" placeholder="Masukkan Nama">
+            <div id="suggestions"
+                class="absolute w-full bg-white border border-gray-300 rounded-lg shadow-md hidden z-[999]">
+            </div>
         </div>
 
         <!-- Input NIK -->

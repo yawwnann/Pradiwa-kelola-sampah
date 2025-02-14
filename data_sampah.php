@@ -1,8 +1,16 @@
 <?php include('db.php');
 include 'navbar.php'; ?>
 
-<div class="container mx-auto p-6 bg-white rounded-lg mt-20 mb-20 shadow-lg">
-    <h1 class="text-3xl font-bold text-center text-teal-600 mb-6">Data Sampah</h1>
+<div class="container mx-auto p-6 bg-white rounded-lg mt-10 pt-20  mb-20 shadow-lg">
+    <!-- Tombol Kembali -->
+    <div class="mb-4">
+        <a href="tampil_data_sampah.php"
+            class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-all">
+            <i class="fas fa-arrow-left"></i> Kembali
+        </a>
+    </div>
+
+    <h1 class="text-4xl font-bold text-center text-teal-600 mb-6">Data Sampah</h1>
 
     <!-- Search sama Filter -->
     <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
@@ -43,8 +51,8 @@ include 'navbar.php'; ?>
             <tbody id="sampah-table" class="text-gray-700">
                 <?php
                 $result = $conn->query("SELECT sampah.id, nasabah.nama, sampah.jenis_sampah, sampah.berat, sampah.tanggal
-                           FROM sampah
-                           JOIN nasabah ON sampah.nasabah_id = nasabah.id");
+                            FROM sampah
+                            JOIN nasabah ON sampah.nasabah_id = nasabah.id");
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr class='border-b hover:bg-gray-100 transition'>";
                     echo "<td class='px-6 py-3'>" . htmlspecialchars($row['nama']) . "</td>";
@@ -52,9 +60,9 @@ include 'navbar.php'; ?>
                     echo "<td class='px-6 py-3'>" . htmlspecialchars($row['berat']) . "</td>";
                     echo "<td class='px-6 py-3'>" . htmlspecialchars($row['tanggal']) . "</td>";
                     echo "<td class='px-6 py-3'>
-                            <button onclick='openEditModal(" . $row['id'] . ", \"" . htmlspecialchars($row['jenis_sampah']) . "\", " . $row['berat'] . ", \"" . $row['tanggal'] . "\")' class='text-teal-600 hover:text-teal-800'>Edit</button>
-                            <button onclick='confirmDelete(" . $row['id'] . ")' class='text-red-600 hover:text-red-800 ml-4'>Hapus</button>
-                          </td>";
+                                <button onclick='openEditModal(" . $row['id'] . ", \"" . htmlspecialchars($row['jenis_sampah']) . "\", " . $row['berat'] . ", \"" . $row['tanggal'] . "\")' class='text-teal-600 hover:text-teal-800'>Edit</button>
+                                <button onclick='confirmDelete(" . $row['id'] . ")' class='text-red-600 hover:text-red-800 ml-4'>Hapus</button>
+                            </td>";
                     echo "</tr>";
                 }
                 ?>
