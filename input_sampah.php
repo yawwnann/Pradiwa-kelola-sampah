@@ -47,10 +47,11 @@
         </div>
 
         <!-- Input Jenis Sampah -->
+        <!-- Input Jenis Sampah -->
         <div class="relative">
             <label for="jenis_sampah" class="block text-sm font-semibold text-teal-700">Jenis Sampah</label>
             <select name="jenis_sampah" id="jenis_sampah"
-                class="w-full p-3 border border-teal-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300">
+                class="w-full p-3 border border-teal-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
                 <optgroup label="Kertas">
                     <option value="Duplex">Duplex</option>
                     <option value="Kardus">Kardus</option>
@@ -68,6 +69,16 @@
                     <option value="Botol Plastik">Botol Plastik</option>
                     <option value="Gelas Plastik">Gelas Plastik</option>
                     <option value="Lainnya (Plastik)">Lainnya</option>
+                </optgroup>
+                <optgroup label="Kaca">
+                    <option value="Botol Sirup">Botol Sirup</option>
+                    <option value="Botol Beling Kecil">Botol Beling Kecil</option>
+                    <option value="Lainnya (Kaca)">Lainnya</option>
+                </optgroup>
+                <optgroup label="Lain-lain">
+                    <option value="Elektronik Rusak">Elektronik Rusak</option>
+                    <option value="Baterai Bekas">Baterai Bekas</option>
+                    <option value="Lainnya (Lain-lain)">Lainnya</option>
                 </optgroup>
             </select>
         </div>
@@ -129,31 +140,43 @@
 </div>
 
 <script>
-    // Handle changes in "Jenis Sampah" dropdown
     document.getElementById("jenis_sampah").addEventListener("change",function() {
         var selectedOption=this.value;
         var inputJenisSampahLainnya=document.getElementById("inputJenisSampahLainnya");
+        var kategoriInput=document.getElementById("kategori");
 
-        // Show input form for other types of waste when "Lainnya" is selected
+        // Tentukan kategori otomatis berdasarkan pilihan
         if(selectedOption.includes("Lainnya")) {
             inputJenisSampahLainnya.classList.remove("hidden");
 
-            // Change label and placeholder based on selected category
-            if(selectedOption==="Lainnya (Kertas)") {
-                document.querySelector("label[for='jenis_sampah_lainnya']").textContent="Jenis Sampah Kertas Lainnya";
-                document.getElementById("jenis_sampah_lainnya").placeholder="Masukkan jenis sampah Kertas lainnya";
-            } else if(selectedOption==="Lainnya (Logam)") {
-                document.querySelector("label[for='jenis_sampah_lainnya']").textContent="Jenis Sampah Logam Lainnya";
-                document.getElementById("jenis_sampah_lainnya").placeholder="Masukkan jenis sampah Logam lainnya";
-            } else if(selectedOption==="Lainnya (Plastik)") {
-                document.querySelector("label[for='jenis_sampah_lainnya']").textContent="Jenis Sampah Plastik Lainnya";
-                document.getElementById("jenis_sampah_lainnya").placeholder="Masukkan jenis sampah Plastik lainnya";
+            if(selectedOption.includes("Kertas")) {
+                kategoriInput.value="Kertas";
+            } else if(selectedOption.includes("Logam")) {
+                kategoriInput.value="Logam";
+            } else if(selectedOption.includes("Plastik")) {
+                kategoriInput.value="Plastik";
+            } else if(selectedOption.includes("Kaca")) {
+                kategoriInput.value="Kaca";
+            } else if(selectedOption.includes("Lain-lain")) {
+                kategoriInput.value="Lain-lain";
             }
         } else {
-            // Hide input form if "Lainnya" is not selected
             inputJenisSampahLainnya.classList.add("hidden");
+
+            if(["Duplex","Kardus","Koran","Majalah"].includes(selectedOption)) {
+                kategoriInput.value="Kertas";
+            } else if(["Aluminium","Tembaga","Kuningan"].includes(selectedOption)) {
+                kategoriInput.value="Logam";
+            } else if(["Botol Plastik","Gelas Plastik"].includes(selectedOption)) {
+                kategoriInput.value="Plastik";
+            } else if(["Botol Sirup","Botol Beling Kecil"].includes(selectedOption)) {
+                kategoriInput.value="Kaca";
+            } else if(["Elektronik Rusak","Baterai Bekas"].includes(selectedOption)) {
+                kategoriInput.value="Lain-lain";
+            }
         }
     });
+
 
     // Set the default date to today
     document.addEventListener("DOMContentLoaded",function() {

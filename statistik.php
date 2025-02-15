@@ -16,7 +16,7 @@
 
 
 
-<div class="container  bg-gray-50 min-h-screen mx-auto mt-10 p-6">
+<div class="container  bg-gray-50 min-h-screen mx-auto pt-20 p-6">
     <h1 class="text-4xl font-bold text-center text-teal-600 mb-8">Statistik Sampah</h1>
 
     <!-- Statistik Ringkasan -->
