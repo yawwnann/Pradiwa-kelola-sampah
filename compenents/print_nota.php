@@ -166,9 +166,13 @@ $total_lain = $total_harga_lain = 0;
         <!-- Tombol Print -->
         <div class="mt-6 text-center no-print">
             <button onclick="window.print()"
-                class="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700">
+                class="px-6 py-3 bg-teal-600 text-white font-bold rounded-lg hover:bg-teal-700">
                 Print Nota
             </button>
+        </div>
+        <div class="mt-3 text-center">
+            <a href="../tampil_data_sampah.php"
+                class="px-6 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700">Kembali</a>
         </div>
     </div>
 

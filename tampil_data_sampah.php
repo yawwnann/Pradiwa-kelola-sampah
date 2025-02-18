@@ -5,10 +5,10 @@ include('navbar.php');
 // Daftar jenis sampah berdasarkan kategori
 $jenis_sampah_kategori = [
     "Kertas" => ['Duplex', 'Kardus', 'Koran', 'Majalah', 'Arsip', 'Buram', 'Lainnya (Kertas)'],
-    "Logam" => ['Aluminium', 'Tembaga', 'Kuningan', 'Kaleng', 'Besi A', 'Besi B', 'Besi C', 'Lainnya (Logam)'],
+    "Logam" => ['Aluminium', 'Tembaga', 'Kuningan', 'Lainnya (Logam)'],
     "Plastik" => ['Botol Plastik', 'Gelas Plastik', 'Plastik Bening', 'Le Minerale', 'Kerasan', 'Lainnya (Plastik)'],
     "Kaca" => ['Botol Sirup', 'Botol Beling Kecil', 'Lainnya (Kaca)'],
-    "Lain-lain" => ['Lainnya']
+    "Lain-lain" => ['Elektronik Rusak', 'Baterai Bekas', 'Lainnya']
 ];
 
 // Cek apakah tombol reset ditekan

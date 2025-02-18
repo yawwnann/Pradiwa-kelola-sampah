@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css">
 
     <style>
         /* Efek underline animasi */
@@ -81,6 +84,13 @@
             <a href="tampil_data_sampah.php" id="data_sampah" class="text-lg font-regular text-black nav-link">Data
                 Sampah</a>
             <a href="statistik.php" id="statistik" class="text-lg font-regular text-black nav-link">Data Statistik</a>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <span class="text-lg font-semibold">Hello Admin</span>
+            <a href="logout.php" class="text-gray-600 text-xl">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
         </div>
     </nav>
 

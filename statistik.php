@@ -1,30 +1,15 @@
 <?php include('db.php'); ?>
 <?php include 'navbar.php'; ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistik Sampah</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css">
-    <!-- Add Font Awesome for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-</head>
-
-
-
-<div class="container  bg-gray-50 min-h-screen mx-auto pt-20 p-6">
+<div class="container bg-gray-50 min-h-screen mx-auto pt-20 p-6">
     <h1 class="text-4xl font-bold text-center text-teal-600 mb-8">Statistik Sampah</h1>
 
     <!-- Statistik Ringkasan -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <!-- Total Nasabah -->
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center transition-transform transform hover:scale-105">
             <i class="fas fa-users text-4xl text-teal-600 mb-4"></i>
-            <h2 class="text-2xl font-reguler text-teal-600">Total Nasabah</h2>
+            <h2 class="text-2xl font-semibold text-teal-600">Total Nasabah</h2>
             <?php
             $nasabah_query = "SELECT COUNT(*) as total_nasabah FROM nasabah";
             $nasabah_result = mysqli_query($conn, $nasabah_query);
@@ -35,9 +20,9 @@
         </div>
 
         <!-- Total Berat Sampah -->
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center transition-transform transform hover:scale-105">
             <i class="fas fa-weight text-4xl text-teal-600 mb-4"></i>
-            <h2 class="text-2xl font-reguler text-teal-600">Total Berat Sampah</h2>
+            <h2 class="text-2xl font-semibold text-teal-600">Total Berat Sampah</h2>
             <?php
             $berat_query = "SELECT SUM(berat) as total_berat FROM sampah";
             $berat_result = mysqli_query($conn, $berat_query);
@@ -48,9 +33,9 @@
         </div>
 
         <!-- Jenis Sampah Paling Banyak -->
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center transition-transform transform hover:scale-105">
             <i class="fas fa-recycle text-4xl text-teal-600 mb-4"></i>
-            <h2 class="text-xl font-reguler text-teal-600">Jenis Sampah Paling Banyak</h2>
+            <h2 class="text-2xl font-semibold text-teal-600">Jenis Sampah Paling Banyak</h2>
             <?php
             $jenis_sampah_query = "SELECT jenis_sampah, COUNT(*) as jumlah FROM sampah GROUP BY jenis_sampah ORDER BY jumlah DESC LIMIT 1";
             $jenis_sampah_result = mysqli_query($conn, $jenis_sampah_query);
@@ -64,9 +49,9 @@
         </div>
 
         <!-- Rata-rata Berat Sampah Per Tanggal -->
-        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center transition-transform transform hover:scale-105">
             <i class="fas fa-calendar-day text-4xl text-teal-600 mb-4"></i>
-            <h2 class="text-2xl font-reguler text-teal-600">Rata-rata Berat Sampah Per Tanggal</h2>
+            <h2 class="text-2xl font-semibold text-teal-600">Rata-rata Berat Sampah Per Tanggal</h2>
             <?php
             $rata_berat_query = "SELECT tanggal, AVG(berat) as rata_berat FROM sampah GROUP BY tanggal";
             $rata_berat_result = mysqli_query($conn, $rata_berat_query);
@@ -80,18 +65,17 @@
     <!-- Grafik -->
     <div class="flex flex-col lg:flex-row items-center justify-center gap-8 mb-12">
         <!-- Grafik Total Berat Sampah per Jenis -->
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full lg:w-1/2">
-            <h2 class="text-2xl font-reguler text-teal-600 mb-4">Total Berat Sampah per Jenis</h2>
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full lg:w-1/2 transition-transform transform hover:scale-105">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Total Berat Sampah per Jenis</h2>
             <canvas id="beratSampahChart"></canvas>
         </div>
 
         <!-- Grafik Sampah per Tanggal -->
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full lg:w-1/2">
-            <h2 class="text-2xl font-reguler text-teal-600 mb-4">Sampah per Tanggal</h2>
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full lg:w-1/2 transition-transform transform hover:scale-105">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">Sampah per Tanggal</h2>
             <canvas id="tanggalChart"></canvas>
         </div>
     </div>
-
 </div>
 
 <script>
