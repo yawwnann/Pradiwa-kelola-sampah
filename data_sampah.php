@@ -1,30 +1,32 @@
 <?php include('db.php');
 include 'navbar.php'; ?>
 
-<div class="container mx-auto p-6 bg-white rounded-lg mt-10 pt-20  mb-20 shadow-lg">
+<div class="container mx-auto px-4 md:p-6 bg-white rounded-lg mt-4 md:mt-10 pt-16 md:pt-20 mb-8 md:mb-20 shadow-lg">
     <!-- Tombol Kembali -->
     <div class="mb-4">
         <a href="tampil_data_sampah.php"
-            class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-all">
+            class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition-all text-sm md:text-base">
             <i class="fas fa-arrow-left"></i> Kembali
         </a>
     </div>
 
-    <h1 class="text-4xl font-bold text-center text-teal-600 mb-6">Data Sampah</h1>
+    <h1 class="text-2xl md:text-4xl font-bold text-center text-teal-600 mb-4 md:mb-6">Data Sampah</h1>
 
     <!-- Search sama Filter -->
-    <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
+    <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-2 md:gap-4">
         <div class="relative w-full md:w-1/3 z-0 flex">
             <i
                 class="fa-solid fa-magnifying-glass text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
             <input type="text" id="search" placeholder="Cari Nasabah / Jenis sampah...."
-                class="w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                class="w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm md:text-base">
         </div>
-        <div class="text-right mb-4">
-            <button onclick="printTable()" class="p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700">Print
-                Data</button>
+        <div class="w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-4">
+            <button onclick="printTable()"
+                class="p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 text-sm md:text-base w-full md:w-auto">
+                Print Data
+            </button>
             <select id="filter"
-                class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm md:text-base w-full md:w-auto">
                 <option value="">Semua Jenis Sampah</option>
                 <?php
                 $result = $conn->query("SELECT DISTINCT jenis_sampah FROM sampah");
@@ -41,11 +43,12 @@ include 'navbar.php'; ?>
         <table class="w-full table-auto border-collapse rounded-lg shadow-sm">
             <thead>
                 <tr class="bg-teal-600 text-white">
-                    <th class="px-6 py-3 text-left">Nama Nasabah</th>
-                    <th class="px-6 py-3 text-left">Jenis Sampah</th>
-                    <th class="px-6 py-3 text-left">Berat (kg)</th>
-                    <th class="px-6 py-3 text-left">Tanggal</th>
-                    <th class="px-6 py-3 text-left">Aksi</th>
+                    <th class="px-3 md:px-6 py-2 md:py-3 text-left text-sm md:text-base">Nama Nasabah</th>
+                    <th class="px-3 md:px-6 py-2 md:py-3 text-left text-sm md:text-base">Jenis Sampah</th>
+                    <th class="px-3 md:px-6 py-2 md:py-3 text-left text-sm md:text-base">Berat (kg)</th>
+                    <th class="px-3 md:px-6 py-2 md:py-3 text-left text-sm md:text-base hidden md:table-cell">Tanggal
+                    </th>
+                    <th class="px-3 md:px-6 py-2 md:py-3 text-left text-sm md:text-base">Aksi</th>
                 </tr>
             </thead>
             <tbody id="sampah-table" class="text-gray-700">
@@ -55,14 +58,18 @@ include 'navbar.php'; ?>
                             JOIN nasabah ON sampah.nasabah_id = nasabah.id");
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr class='border-b hover:bg-gray-100 transition'>";
-                    echo "<td class='px-6 py-3'>" . htmlspecialchars($row['nama']) . "</td>";
-                    echo "<td class='px-6 py-3'>" . htmlspecialchars($row['jenis_sampah']) . "</td>";
-                    echo "<td class='px-6 py-3'>" . htmlspecialchars($row['berat']) . "</td>";
-                    echo "<td class='px-6 py-3'>" . htmlspecialchars($row['tanggal']) . "</td>";
-                    echo "<td class='px-6 py-3'>
-                                <button onclick='openEditModal(" . $row['id'] . ", \"" . htmlspecialchars($row['jenis_sampah']) . "\", " . $row['berat'] . ", \"" . $row['tanggal'] . "\")' class='text-teal-600 hover:text-teal-800'>Edit</button>
-                                <button onclick='confirmDelete(" . $row['id'] . ")' class='text-red-600 hover:text-red-800 ml-4'>Hapus</button>
-                            </td>";
+                    echo "<td class='px-3 md:px-6 py-2 md:py-3 text-sm md:text-base'>" . htmlspecialchars($row['nama']) . "</td>";
+                    echo "<td class='px-3 md:px-6 py-2 md:py-3 text-sm md:text-base'>" . htmlspecialchars($row['jenis_sampah']) . "</td>";
+                    echo "<td class='px-3 md:px-6 py-2 md:py-3 text-sm md:text-base'>" . htmlspecialchars($row['berat']) . "</td>";
+                    echo "<td class='px-3 md:px-6 py-2 md:py-3 text-sm md:text-base hidden md:table-cell'>" . htmlspecialchars($row['tanggal']) . "</td>";
+                    echo "<td class='px-3 md:px-6 py-2 md:py-3'>
+                            <div class='flex flex-wrap gap-1 md:gap-4'>
+                                <button onclick='openEditModal(" . $row['id'] . ", \"" . htmlspecialchars($row['jenis_sampah']) . "\", " . $row['berat'] . ", \"" . $row['tanggal'] . "\")' 
+                                    class='text-teal-600 hover:text-teal-800 text-sm md:text-base'>Edit</button>
+                                <button onclick='confirmDelete(" . $row['id'] . ")' 
+                                    class='text-red-600 hover:text-red-800 text-sm md:text-base'>Hapus</button>
+                            </div>
+                          </td>";
                     echo "</tr>";
                 }
                 ?>
@@ -73,26 +80,30 @@ include 'navbar.php'; ?>
 
 <!-- Modal Edit -->
 <div id="editModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 class="text-xl font-bold mb-4 text-center">Edit Sampah</h2>
+    <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg w-11/12 md:w-96 mx-2">
+        <h2 class="text-lg md:text-xl font-bold mb-4 text-center">Edit Sampah</h2>
         <form id="editForm" method="POST">
             <input type="hidden" id="editId">
-            <label for="jenis_sampah">Jenis Sampah</label>
-            <input type="text" id="editJenisSampah" name="jenis_sampah" required
-                class="w-full p-2 border border-gray-300 rounded-lg mb-2">
-
-            <label for="berat">Berat (kg)</label>
-            <input type="number" id="editBerat" name="berat" required
-                class="w-full p-2 border border-gray-300 rounded-lg mb-2" step="0.01" min="0">
-
-            <label for="tanggal">Tanggal</label>
-            <input type="date" id="editTanggal" name="tanggal" required
-                class="w-full p-2 border border-gray-300 rounded-lg mb-4">
-
-            <div class="flex justify-between">
+            <div class="mb-2">
+                <label for="jenis_sampah" class="text-sm md:text-base">Jenis Sampah</label>
+                <input type="text" id="editJenisSampah" name="jenis_sampah" required
+                    class="w-full p-2 border border-gray-300 rounded-lg mt-1 text-sm md:text-base">
+            </div>
+            <div class="mb-2">
+                <label for="berat" class="text-sm md:text-base">Berat (kg)</label>
+                <input type="number" id="editBerat" name="berat" required
+                    class="w-full p-2 border border-gray-300 rounded-lg mt-1 text-sm md:text-base" step="0.01" min="0">
+            </div>
+            <div class="mb-4">
+                <label for="tanggal" class="text-sm md:text-base">Tanggal</label>
+                <input type="date" id="editTanggal" name="tanggal" required
+                    class="w-full p-2 border border-gray-300 rounded-lg mt-1 text-sm md:text-base">
+            </div>
+            <div class="flex justify-between gap-2">
                 <button type="button" onclick="closeEditModal()"
-                    class="bg-gray-500 text-white p-2 rounded-lg">Batal</button>
-                <button type="submit" class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700">Simpan</button>
+                    class="bg-gray-500 text-white p-2 rounded-lg flex-1 text-sm md:text-base">Batal</button>
+                <button type="submit"
+                    class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700 flex-1 text-sm md:text-base">Simpan</button>
             </div>
         </form>
     </div>
@@ -100,24 +111,24 @@ include 'navbar.php'; ?>
 
 <!-- Modal Konfirmasi Hapus -->
 <div id="confirmDeleteModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 class="text-xl font-bold mb-4 text-center">Konfirmasi Penghapusan</h2>
-        <p class="mb-4 text-center">Apakah Anda yakin ingin menghapus data ini?</p>
-        <div class="flex justify-between">
+    <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg w-11/12 md:w-96 mx-2">
+        <h2 class="text-lg md:text-xl font-bold mb-4 text-center">Konfirmasi Penghapusan</h2>
+        <p class="mb-4 text-center text-sm md:text-base">Apakah Anda yakin ingin menghapus data ini?</p>
+        <div class="flex justify-between gap-2">
             <button type="button" onclick="closeConfirmDeleteModal()"
-                class="bg-gray-500 text-white p-2 rounded-lg">Batal</button>
+                class="bg-gray-500 text-white p-2 rounded-lg flex-1 text-sm md:text-base">Batal</button>
             <button id="confirmDeleteButton" type="button"
-                class="bg-red-600 text-white p-2 rounded-lg hover:bg-red-700">Hapus</button>
+                class="bg-red-600 text-white p-2 rounded-lg hover:bg-red-700 flex-1 text-sm md:text-base">Hapus</button>
         </div>
     </div>
 </div>
 
 <!-- Modal Data Berhasil Dihapus -->
 <div id="successDeleteModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
-        <h2 class="text-lg font-bold text-green-600 mb-4">Data Berhasil Dihapus!</h2>
+    <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg w-11/12 md:w-96 mx-2 text-center">
+        <h2 class="text-base md:text-lg font-bold text-green-600 mb-4">Data Berhasil Dihapus!</h2>
         <button onclick="closeSuccessDeleteModal()"
-            class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700">OK</button>
+            class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700 text-sm md:text-base px-8">OK</button>
     </div>
 </div>
 

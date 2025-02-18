@@ -52,122 +52,129 @@ while ($row = $result->fetch_assoc()) {
 $stmt->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Sampah</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
-</head>
+<script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
 
-<body>
-    <div class="container mx-auto p-6 mt-6 bg-white shadow-xl rounded-lg">
-        <!-- Header -->
-        <div class="bg-teal-600 p-6 rounded-t-lg text-white shadow-lg">
-            <h1 class="text-3xl font-bold text-center"><i class="fas fa-database"></i> Data Sampah</h1>
-        </div>
 
-        <!-- Form Filter -->
-        <div class="bg-gray-200 p-6 rounded-lg mt-4 flex justify-center">
-            <form method="POST" class="w-full max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
-                <div class="col-span-2 flex justify-center gap-4">
-                    <div class="flex flex-col text-center">
-                        <label class="text-gray-700 text-lg font-semibold mb-1">
-                            <i class="fas fa-calendar-alt"></i> Mulai Tanggal:
-                        </label>
-                        <input type="date" name="start_date"
-                            class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 w-full"
-                            value="<?= htmlspecialchars($start_date); ?>">
-                    </div>
-
-                    <div class="flex flex-col text-center">
-                        <label class="text-gray-700 text-lg font-semibold mb-1">
-                            <i class="fas fa-calendar-alt"></i> Sampai Tanggal:
-                        </label>
-                        <input type="date" name="end_date"
-                            class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 w-full"
-                            value="<?= htmlspecialchars($end_date); ?>">
-                    </div>
-                </div>
-
-                <div class="col-span-2 flex justify-center gap-3">
-                    <button type="submit" name="filter"
-                        class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition-all">
-                        <i class="fas fa-filter"></i> Filter Data
-                    </button>
-                    <button type="submit" name="reset"
-                        class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
-                        <i class="fas fa-sync-alt"></i> Reset
-                    </button>
-                    <a href="compenents/print_nota.php"
-                        class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
-                        <i class="fas fa-print"></i> Print
-                    </a>
-                    <a href="data_sampah.php"
-                        class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all">
-                        <i class="fas fa-history"></i> Riwayat
-                    </a>
-                </div>
-            </form>
-        </div>
-
-        <!-- Tabel Data -->
-        <div class="overflow-x-auto mt-6">
-            <table class="w-full bg-white border-collapse shadow-lg rounded-lg overflow-hidden">
-                <thead>
-                    <tr class="bg-teal-600 text-white">
-                        <th class="border-b px-6 py-3 text-left text-sm font-semibold">Kategori</th>
-                        <th class="border-b px-6 py-3 text-left text-sm font-semibold">Jenis Sampah</th>
-                        <th class="border-b px-6 py-3 text-left text-sm font-semibold">Berat (kg)</th>
-                        <th class="border-b px-6 py-3 text-left text-sm font-semibold">Harga per kg (Rp)</th>
-                        <th class="border-b px-6 py-3 text-left text-sm font-semibold">Total Harga (Rp)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $row_class = 'bg-gray-50';
-
-                    foreach ($jenis_sampah_kategori as $kategori => $jenis_sampah_list) {
-                        foreach ($jenis_sampah_list as $jenis_sampah) {
-                            $berat = 0;
-                            $harga = 0;
-
-                            foreach ($data as $row) {
-                                if ($row['jenis_sampah'] == $jenis_sampah) {
-                                    $berat += $row['berat'];
-                                    $harga = $row['harga'];
-                                }
-                            }
-
-                            $total_harga = $berat * $harga;
-                            ?>
-                            <tr class="<?= $row_class; ?> hover:bg-gray-200 transition-all">
-                                <td class="border-b px-6 py-4"><?= htmlspecialchars($kategori); ?></td>
-                                <td class="border-b px-6 py-4"><?= htmlspecialchars($jenis_sampah); ?></td>
-                                <td class="border-b px-6 py-4 text-left"><?= number_format($berat, 2); ?></td>
-                                <td class="border-b px-6 py-4 text-left"><?= number_format($harga, 2); ?></td>
-                                <td class="border-b px-6 py-4 text-left font-bold text-green-600">
-                                    <?= number_format($total_harga, 2); ?>
-                                </td>
-                            </tr>
-                            <?php
-                            $row_class = ($row_class === 'bg-gray-50') ? 'bg-white' : 'bg-gray-50';
-                        }
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="mt-6 p-6 bg-gray-100 rounded-lg flex justify-between items-left">
-            <strong class="text-xl text-teal-600"><i class="fas fa-money-bill-wave"></i> Jumlah Harga:</strong>
-            <span class="text-2xl font-bold text-green-600">Rp <?= number_format($total_price, 2); ?></span>
-        </div>
+<div class="container mx-auto px-4 md:p-6 pt-16 md:pt-20 bg-white shadow-xl rounded-lg">
+    <!-- Header -->
+    <div class="bg-teal-600 mt-4 md:mt-8 p-4 md:p-6 rounded-t-lg text-white shadow-lg">
+        <h1 class="text-2xl md:text-3xl font-bold text-center">
+            <i class="fas fa-database"></i> Data Sampah
+        </h1>
     </div>
 
-    <?php
-    $conn->close();
-    ?>
+    <!-- Form Filter -->
+    <div class="bg-gray-200 p-4 md:p-6 rounded-lg mt-4">
+        <form method="POST" class="w-full max-w-2xl mx-auto grid grid-cols-1 gap-4">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="w-full md:w-1/2">
+                    <label class="text-gray-700 text-sm md:text-lg font-semibold mb-1 block">
+                        <i class="fas fa-calendar-alt"></i> Mulai Tanggal:
+                    </label>
+                    <input type="date" name="start_date"
+                        class="p-2 md:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 w-full">
+                </div>
+
+                <div class="w-full md:w-1/2">
+                    <label class="text-gray-700 text-sm md:text-lg font-semibold mb-1 block">
+                        <i class="fas fa-calendar-alt"></i> Sampai Tanggal:
+                    </label>
+                    <input type="date" name="end_date"
+                        class="p-2 md:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 w-full">
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+                <button type="submit" name="filter"
+                    class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg transition-all text-sm md:text-base">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+                <button type="submit" name="reset"
+                    class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg transition-all text-sm md:text-base">
+                    <i class="fas fa-sync-alt"></i> Reset
+                </button>
+                <a href="compenents/print_nota.php"
+                    class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg transition-all text-sm md:text-base">
+                    <i class="fas fa-print"></i> Print
+                </a>
+                <a href="data_sampah.php"
+                    class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg transition-all text-sm md:text-base">
+                    <i class="fas fa-history"></i> Riwayat
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Tabel Data -->
+    <div class="overflow-x-auto mt-4 md:mt-6">
+        <table class="w-full bg-white border-collapse shadow-lg rounded-lg overflow-hidden">
+            <thead>
+                <tr class="bg-teal-600 text-white">
+                    <th class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold">Kategori</th>
+                    <th class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold">Jenis Sampah
+                    </th>
+                    <th class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold">Berat (kg)
+                    </th>
+                    <th
+                        class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold hidden md:table-cell">
+                        Harga/kg</th>
+                    <th class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $row_class = 'bg-gray-50';
+                foreach ($jenis_sampah_kategori as $kategori => $jenis_sampah_list) {
+                    foreach ($jenis_sampah_list as $jenis_sampah) {
+                        $berat = 0;
+                        $harga = 0;
+                        foreach ($data as $row) {
+                            if ($row['jenis_sampah'] == $jenis_sampah) {
+                                $berat += $row['berat'];
+                                $harga = $row['harga'];
+                            }
+                        }
+                        $total_harga = $berat * $harga;
+                        ?>
+                        <tr class="<?= $row_class; ?> hover:bg-gray-200 transition-all">
+                            <td class="border-b px-3 md:px-6 py-2 md:py-4 text-xs md:text-base">
+                                <?= htmlspecialchars($kategori); ?>
+                            </td>
+                            <td class="border-b px-3 md:px-6 py-2 md:py-4 text-xs md:text-base">
+                                <?= htmlspecialchars($jenis_sampah); ?>
+                            </td>
+                            <td class="border-b px-3 md:px-6 py-2 md:py-4 text-xs md:text-base">
+                                <?= number_format($berat, 2); ?>
+                            </td>
+                            <td class="border-b px-3 md:px-6 py-2 md:py-4 text-xs md:text-base hidden md:table-cell">
+                                <?= number_format($harga, 2); ?>
+                            </td>
+                            <td class="border-b px-3 md:px-6 py-2 md:py-4 text-xs md:text-base font-bold text-green-600">
+                                <?= number_format($total_harga, 2); ?>
+                            </td>
+                        </tr>
+                        <?php
+                        $row_class = ($row_class === 'bg-gray-50') ? 'bg-white' : 'bg-gray-50';
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div
+        class="mt-4 md:mt-6 p-4 md:p-6 bg-gray-100 rounded-lg flex flex-col md:flex-row justify-between items-center gap-2">
+        <strong class="text-lg md:text-xl text-teal-600">
+            <i class="fas fa-money-bill-wave"></i> Jumlah Harga:
+        </strong>
+        <span class="text-xl md:text-2xl font-bold text-green-600">
+            Rp <?= number_format($total_price, 2); ?>
+        </span>
+    </div>
+</div>
+
+
+<?php
+$conn->close();
+?>

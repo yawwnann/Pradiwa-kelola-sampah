@@ -14,34 +14,34 @@ while ($row = $result->fetch_assoc()) {
 
 <body class="bg-white">
 
-
     <!-- Container -->
-    <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg z-10 mt-10 pt-20">
-        <h1 class="text-4xl font-bold text-center text-teal-600 mb-6">Data Nasabah</h1>
+    <div class="container mx-auto px-4 md:p-6 bg-white rounded-lg shadow-lg z-10 mt-4 md:mt-10 pt-16 md:pt-20">
+        <h1 class="text-2xl md:text-4xl font-bold text-center text-teal-600 mb-4 md:mb-6">Data Nasabah</h1>
 
         <!-- Search & Filter & Tambah Nasabah -->
-        <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-2 md:gap-4">
             <div class="relative w-full md:w-1/3 z-0 flex">
                 <i
                     class="fa-solid fa-magnifying-glass text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
                 <input type="text" id="search" placeholder="Cari Nama / NIK..."
-                    class="w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    class="w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm md:text-base">
             </div>
 
-            <div class="text-right flex gap-4">
+            <div class="w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-4">
                 <!-- Tombol Tambah Nasabah -->
-                <button onclick="openModal()" class="p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700">
+                <button onclick="openModal()"
+                    class="p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 text-sm md:text-base">
                     Tambah Nasabah
                 </button>
 
                 <!-- Tombol Print PDF -->
                 <a href="compenents/print_pdf.php" target="_blank"
-                    class="p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700">
+                    class="p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 text-center text-sm md:text-base">
                     Print PDF
                 </a>
 
                 <select id="filter"
-                    class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm md:text-base">
                     <option value="">Semua</option>
                     <option value="asc">A - Z</option>
                     <option value="desc">Z - A</option>
@@ -53,14 +53,15 @@ while ($row = $result->fetch_assoc()) {
 
         <!-- Table Container -->
         <div class="overflow-x-auto rounded-lg">
-            <table class="w-full table-fixed border-collapse bg-white shadow-md" id="nasabah-table">
+            <table class="w-full table-auto md:table-fixed border-collapse bg-white shadow-md" id="nasabah-table">
                 <thead>
                     <tr class="bg-teal-600 text-white">
-                        <th class="w-1 p-4 text-left cursor-pointer" onclick="sortTable(0)">ID</th>
-                        <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(1)">Nama</th>
-                        <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(2)">NIK</th>
-                        <th class="w-1/4 p-4 text-left cursor-pointer" onclick="sortTable(3)">Alamat</th>
-                        <th class="w-1/4 p-4 text-left">Aksic</th>
+                        <th class="w-1/12 p-2 md:p-4 text-left cursor-pointer" onclick="sortTable(0)">ID</th>
+                        <th class="w-3/12 p-2 md:p-4 text-left cursor-pointer" onclick="sortTable(1)">Nama</th>
+                        <th class="w-3/12 p-2 md:p-4 text-left cursor-pointer" onclick="sortTable(2)">NIK</th>
+                        <th class="hidden md:table-cell w-3/12 p-2 md:p-4 text-left cursor-pointer"
+                            onclick="sortTable(3)">Alamat</th>
+                        <th class="w-2/12 p-2 md:p-4 text-left">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-700" id="nasabah-body">
@@ -68,13 +69,15 @@ while ($row = $result->fetch_assoc()) {
                     $id_counter = 1;
                     foreach ($nasabah_data as $row) {
                         echo "<tr class='border-b hover:bg-gray-100 transition' id='nasabah-row-" . $row['id'] . "'>";
-                        echo "<td class='w-1/4 p-4'>" . $row['id'] . "</td>";
-                        echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['nama']) . "</td>";
-                        echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['nik']) . "</td>";
-                        echo "<td class='w-1/4 p-4'>" . htmlspecialchars($row['alamat']) . "</td>";
-                        echo "<td class='w-1/4 p-4 text-left'>
-                            <button onclick='editData(" . $row['id'] . ")' class='text-teal-600  mr-6 hover:text-teal-800'>Edit</button>
-                            <button onclick='deleteData(" . $row['id'] . ")' class='text-red-600 hover:text-red-800'>Hapus</button>
+                        echo "<td class='p-2 md:p-4'>" . $row['id'] . "</td>";
+                        echo "<td class='p-2 md:p-4'>" . htmlspecialchars($row['nama']) . "</td>";
+                        echo "<td class='p-2 md:p-4'>" . htmlspecialchars($row['nik']) . "</td>";
+                        echo "<td class='hidden md:table-cell p-2 md:p-4'>" . htmlspecialchars($row['alamat']) . "</td>";
+                        echo "<td class='p-2 md:p-4'>
+                            <div class='flex flex-col md:flex-row gap-1 md:gap-4'>
+                                <button onclick='editData(" . $row['id'] . ")' class='text-teal-600 hover:text-teal-800 text-sm md:text-base'>Edit</button>
+                                <button onclick='deleteData(" . $row['id'] . ")' class='text-red-600 hover:text-red-800 text-sm md:text-base'>Hapus</button>
+                            </div>
                           </td>";
                         echo "</tr>";
                         $id_counter++;
@@ -87,236 +90,189 @@ while ($row = $result->fetch_assoc()) {
 
     <!-- Modal Tambah Nasabah -->
     <div id="modal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 class="text-xl font-bold mb-4 text-center">Tambah Nasabah</h2>
+        <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg w-11/12 md:w-96 mx-4">
+            <h2 class="text-lg md:text-xl font-bold mb-4 text-center">Tambah Nasabah</h2>
             <form id="addNasabahForm">
                 <input type="text" id="nama" placeholder="Nama" required
-                    class="w-full p-2 border border-gray-300 rounded-lg mb-2">
+                    class="w-full p-2 border border-gray-300 rounded-lg mb-2 text-sm md:text-base">
                 <input type="text" id="nik" placeholder="NIK" required
-                    class="w-full p-2 border border-gray-300 rounded-lg mb-2">
+                    class="w-full p-2 border border-gray-300 rounded-lg mb-2 text-sm md:text-base">
                 <input type="text" id="alamat" placeholder="Alamat" required
-                    class="w-full p-2 border border-gray-300 rounded-lg mb-4">
-                <div class="flex justify-between">
+                    class="w-full p-2 border border-gray-300 rounded-lg mb-4 text-sm md:text-base">
+                <div class="flex justify-between gap-2">
                     <button type="button" onclick="closeModal()"
-                        class="bg-gray-500 text-white p-2 rounded-lg">Batal</button>
+                        class="bg-gray-500 text-white p-2 rounded-lg flex-1 text-sm md:text-base">Batal</button>
                     <button type="submit"
-                        class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700">Simpan</button>
+                        class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700 flex-1 text-sm md:text-base">Simpan</button>
                 </div>
             </form>
         </div>
     </div>
+
     <!-- Modal Edit Nasabah -->
     <div id="editModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 class="text-xl font-bold mb-4 text-center">Edit Nasabah</h2>
+        <div class="bg-white p-4 md:p-6 rounded-lg shadow-lg w-11/12 md:w-96 mx-4">
+            <h2 class="text-lg md:text-xl font-bold mb-4 text-center">Edit Nasabah</h2>
             <form id="editNasabahForm">
                 <input type="hidden" id="editId">
                 <input type="text" id="editNama" placeholder="Nama" required
-                    class="w-full p-2 border border-gray-300 rounded-lg mb-2">
+                    class="w-full p-2 border border-gray-300 rounded-lg mb-2 text-sm md:text-base">
                 <input type="text" id="editNik" placeholder="NIK" required
-                    class="w-full p-2 border border-gray-300 rounded-lg mb-2">
+                    class="w-full p-2 border border-gray-300 rounded-lg mb-2 text-sm md:text-base">
                 <input type="text" id="editAlamat" placeholder="Alamat" required
-                    class="w-full p-2 border border-gray-300 rounded-lg mb-4">
-                <div class="flex justify-between">
+                    class="w-full p-2 border border-gray-300 rounded-lg mb-4 text-sm md:text-base">
+                <div class="flex justify-between gap-2">
                     <button type="button" onclick="closeEditModal()"
-                        class="bg-gray-500 text-white p-2 rounded-lg">Batal</button>
+                        class="bg-gray-500 text-white p-2 rounded-lg flex-1 text-sm md:text-base">Batal</button>
                     <button type="submit"
-                        class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700">Simpan</button>
+                        class="bg-teal-600 text-white p-2 rounded-lg hover:bg-teal-700 flex-1 text-sm md:text-base">Simpan</button>
                 </div>
             </form>
         </div>
     </div>
-
-
     <script>
-        // Fungsi untuk mencari data
-        document.getElementById("search").addEventListener("keyup",function() {
-            let searchValue=this.value.toLowerCase();
-            let rows=document.querySelectorAll("#nasabah-body tr");
+        document.addEventListener("DOMContentLoaded",function() {
+            // Fungsi untuk mencari data
+            document.getElementById("search").addEventListener("keyup",function() {
+                let searchValue=this.value.toLowerCase();
+                let rows=document.querySelectorAll("#nasabah-body tr");
 
-            rows.forEach(row => {
-                let nama=row.cells[1].textContent.toLowerCase();
-                let nik=row.cells[2].textContent.toLowerCase();
-                row.style.display=(nama.includes(searchValue)||nik.includes(searchValue))? "":"none";
-            });
-        });
-
-
-        // Fungsi untuk mengedit data nasabah
-        function editData(id) {
-            // Ambil data nasabah berdasarkan ID
-            let row=document.getElementById('nasabah-row-'+id);
-            let nama=row.cells[1].innerText;
-            let nik=row.cells[2].innerText;
-            let alamat=row.cells[3].innerText;
-
-            // Isi data ke form edit
-            document.getElementById('editId').value=id;
-            document.getElementById('editNama').value=nama;
-            document.getElementById('editNik').value=nik;
-            document.getElementById('editAlamat').value=alamat;
-
-            // Buka modal edit
-            document.getElementById('editModal').classList.remove('hidden');
-        }
-
-        // Fungsi untuk menutup modal edit
-        function closeEditModal() {
-            document.getElementById('editModal').classList.add('hidden');
-        }
-
-        // Menangani submit form edit
-        document.getElementById("editNasabahForm").addEventListener("submit",function(event) {
-            event.preventDefault();
-
-            let id=document.getElementById("editId").value;
-            let nama=document.getElementById("editNama").value;
-            let nik=document.getElementById("editNik").value;
-            let alamat=document.getElementById("editAlamat").value;
-
-            // Mengirim data ke server untuk mengupdate data
-            fetch("compenents/proses_edit_nasabah.php",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: `id=${id}&nama=${nama}&nik=${nik}&alamat=${alamat}`
-            })
-                .then(response => response.text())
-                .then(data => {
-                    // Mengupdate data pada tabel tanpa reload
-                    let row=document.getElementById('nasabah-row-'+id);
-                    row.cells[1].innerText=nama;
-                    row.cells[2].innerText=nik;
-                    row.cells[3].innerText=alamat;
-
-                    // Menutup modal edit
-                    closeEditModal();
+                rows.forEach(row => {
+                    let nama=row.cells[1].textContent.toLowerCase();
+                    let nik=row.cells[2].textContent.toLowerCase();
+                    row.style.display=(nama.includes(searchValue)||nik.includes(searchValue))? "":"none";
                 });
-        });
+            });
 
+            // Fungsi untuk membuka modal Edit dengan data yang sudah diisi
+            window.editData=function(id) {
+                let row=document.getElementById(`nasabah-row-${id}`);
+                let nama=row.cells[1].textContent;
+                let nik=row.cells[2].textContent;
+                let alamat=row.cells[3].textContent;
 
-        // Fungsi untuk menghapus data
-        function deleteData(id) {
-            if(confirm("Yakin ingin menghapus data?")) {
-                // Mengirim permintaan ke server untuk menghapus data
-                fetch("compenents/proses_hapus_nasabah.php",{
+                // Isi form modal edit
+                document.getElementById("editId").value=id;
+                document.getElementById("editNama").value=nama;
+                document.getElementById("editNik").value=nik;
+                document.getElementById("editAlamat").value=alamat;
+
+                // Buka modal edit
+                document.getElementById("editModal").classList.remove("hidden");
+            };
+
+            // Fungsi untuk menutup modal edit
+            window.closeEditModal=function() {
+                document.getElementById("editModal").classList.add("hidden");
+            };
+
+            // Menangani submit form edit
+            document.getElementById("editNasabahForm").addEventListener("submit",function(event) {
+                event.preventDefault();
+
+                let id=document.getElementById("editId").value;
+                let nama=document.getElementById("editNama").value;
+                let nik=document.getElementById("editNik").value;
+                let alamat=document.getElementById("editAlamat").value;
+
+                fetch("compenents/proses_edit_nasabah.php",{
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    body: `id=${id}`
+                    headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                    body: `id=${id}&nama=${nama}&nik=${nik}&alamat=${alamat}`
                 })
                     .then(response => response.text())
-                    .then(data => {
-                        // Menghapus baris tabel setelah berhasil
-                        let row=document.getElementById('nasabah-row-'+id);
-                        row.remove();
+                    .then(() => {
+                        // Update data di tabel tanpa reload
+                        let row=document.getElementById(`nasabah-row-${id}`);
+                        row.cells[1].textContent=nama;
+                        row.cells[2].textContent=nik;
+                        row.cells[3].textContent=alamat;
+
+                        // Tutup modal edit
+                        closeEditModal();
                     });
-            }
-        }
-
-
-    </script>
-    <script>
-        // Fungsi untuk membuka modal
-        function openModal() {
-            document.getElementById("modal").classList.remove("hidden");
-        }
-
-        // Fungsi untuk menutup modal
-        function closeModal() {
-            document.getElementById("modal").classList.add("hidden");
-        }
-
-        // Fungsi untuk mencari data
-        document.getElementById("search").addEventListener("keyup",function() {
-            let searchValue=this.value.toLowerCase();
-            let rows=document.querySelectorAll("#nasabah-body tr");
-
-            rows.forEach(row => {
-                let nama=row.cells[1].textContent.toLowerCase();
-                let nik=row.cells[2].textContent.toLowerCase();
-                row.style.display=(nama.includes(searchValue)||nik.includes(searchValue))? "":"none";
             });
-        });
 
-        // Fungsi untuk menambah data nasabah
-        document.getElementById("addNasabahForm").addEventListener("submit",function(event) {
-            event.preventDefault();
+            // Fungsi untuk menghapus data
+            window.deleteData=function(id) {
+                if(confirm("Yakin ingin menghapus data?")) {
+                    fetch("compenents/proses_hapus_nasabah.php",{
+                        method: "POST",
+                        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                        body: `id=${id}`
+                    })
+                        .then(response => response.text())
+                        .then(() => {
+                            document.getElementById(`nasabah-row-${id}`).remove();
+                        });
+                }
+            };
 
-            let nama=document.getElementById("nama").value;
-            let nik=document.getElementById("nik").value;
-            let alamat=document.getElementById("alamat").value;
+            // Fungsi untuk mengurutkan data berdasarkan Nama, ID, dan lainnya
+            document.getElementById("filter").addEventListener("change",function() {
+                let filterValue=this.value;
+                let tableBody=document.getElementById("nasabah-body");
+                let rows=Array.from(tableBody.rows);
 
-            fetch("compenents/proses_tambah_nasabah.php",{
-                method: "POST",
-                headers: {"Content-Type": "application/x-www-form-urlencoded"},
-                body: `nama=${nama}&nik=${nik}&alamat=${alamat}`
-            })
-                .then(response => response.text())
-                .then(data => {
-                    closeModal();
-                    let tableBody=document.getElementById("nasabah-body");
-                    let newRow=document.createElement("tr");
-                    newRow.classList.add("border-b","hover:bg-gray-100","transition");
-                    newRow.innerHTML=`
-                <td class='w-1/4 p-4'>NEW</td>
-                <td class='w-1/4 p-4'>${nama}</td>
-                <td class='w-1/4 p-4'>${nik}</td>
-                <td class='w-1/4 p-4'>${alamat}</td>
-                <td class='w-1/4 p-4 text-center'>
-                    <button class='p-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700'>Edit</button>
-                    <button class='p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 ml-2'>Hapus</button>
-                </td>
-            `;
-                    tableBody.appendChild(newRow);
-                });
-        });
+                if(filterValue==="asc") {
+                    rows.sort((a,b) => a.cells[1].textContent.localeCompare(b.cells[1].textContent));
+                } else if(filterValue==="desc") {
+                    rows.sort((a,b) => b.cells[1].textContent.localeCompare(a.cells[1].textContent));
+                } else if(filterValue==="newest") {
+                    rows.sort((a,b) => parseInt(b.cells[0].textContent)-parseInt(a.cells[0].textContent));
+                } else if(filterValue==="oldest") {
+                    rows.sort((a,b) => parseInt(a.cells[0].textContent)-parseInt(b.cells[0].textContent));
+                } else {
+                    return;
+                }
 
+                // Update tabel dengan urutan baru
+                tableBody.innerHTML="";
+                rows.forEach(row => tableBody.appendChild(row));
+            });
 
-        //Sorting Data berdasarkan filter A-Z, Z-A, Terbaru, Terlama
-        document.getElementById("filter").addEventListener("change",function() {
-            let filterValue=this.value;
-            let tableBody=document.getElementById("nasabah-body");
-            let rows=Array.from(tableBody.rows);
+            // Fungsi untuk membuka modal tambah data
+            window.openModal=function() {
+                document.getElementById("modal").classList.remove("hidden");
+            };
 
-            if(filterValue==="asc") {
-                // Urutkan A-Z berdasarkan Nama
-                rows.sort((a,b) => {
-                    let aText=a.cells[1].textContent.trim().toLowerCase();
-                    let bText=b.cells[1].textContent.trim().toLowerCase();
-                    return aText.localeCompare(bText);
-                });
-            } else if(filterValue==="desc") {
-                // Urutkan Z-A berdasarkan Nama
-                rows.sort((a,b) => {
-                    let aText=a.cells[1].textContent.trim().toLowerCase();
-                    let bText=b.cells[1].textContent.trim().toLowerCase();
-                    return bText.localeCompare(aText);
-                });
-            } else if(filterValue==="newest") {
-                // Urutkan berdasarkan ID terbaru (ID besar ke kecil)
-                rows.sort((a,b) => {
-                    let aText=parseInt(a.cells[0].textContent.trim(),10);
-                    let bText=parseInt(b.cells[0].textContent.trim(),10);
-                    return bText-aText;
-                });
-            } else if(filterValue==="oldest") {
-                // Urutkan berdasarkan ID terlama (ID kecil ke besar)
-                rows.sort((a,b) => {
-                    let aText=parseInt(a.cells[0].textContent.trim(),10);
-                    let bText=parseInt(b.cells[0].textContent.trim(),10);
-                    return aText-bText;
-                });
-            } else {
-                // Kembalikan ke data awal jika "Semua" dipilih
-                resetTable();
-                return;
-            }
+            // Fungsi untuk menutup modal tambah data
+            window.closeModal=function() {
+                document.getElementById("modal").classList.add("hidden");
+            };
 
-            // Perbarui tabel dengan urutan baru
-            tableBody.innerHTML=""; // Kosongkan tabel sebelum menambahkan kembali baris yang sudah diurutkan
-            rows.forEach(row => tableBody.appendChild(row));
+            // Fungsi untuk menambah data nasabah
+            document.getElementById("addNasabahForm").addEventListener("submit",function(event) {
+                event.preventDefault();
+
+                let nama=document.getElementById("nama").value;
+                let nik=document.getElementById("nik").value;
+                let alamat=document.getElementById("alamat").value;
+
+                fetch("compenents/proses_tambah_nasabah.php",{
+                    method: "POST",
+                    headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                    body: `nama=${nama}&nik=${nik}&alamat=${alamat}`
+                })
+                    .then(response => response.text())
+                    .then(() => {
+                        closeModal();
+                        let tableBody=document.getElementById("nasabah-body");
+                        let newRow=document.createElement("tr");
+                        newRow.classList.add("border-b","hover:bg-gray-100","transition");
+
+                        newRow.innerHTML=`
+                    <td class="p-4">NEW</td>
+                    <td class="p-4">${nama}</td>
+                    <td class="p-4">${nik}</td>
+                    <td class="p-4 hidden md:table-cell">${alamat}</td>
+                    <td class="p-4">
+                        <button onclick="editData('NEW')" class="text-teal-600 mr-2 hover:text-teal-800">Edit</button>
+                        <button onclick="deleteData('NEW')" class="text-red-600 hover:text-red-800">Hapus</button>
+                    </td>
+                `;
+                        tableBody.appendChild(newRow);
+                    });
+            });
         });
     </script>
