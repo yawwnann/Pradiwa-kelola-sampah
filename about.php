@@ -15,7 +15,7 @@ include 'navbar.php';
         <!-- Deskripsi -->
         <div class="md:w-1/2 text-left text-white px-6" data-aos="fade-left" data-aos-delay="500">
             <h1 class="text-4xl font-bold mb-4">Tentang Kami</h1>
-            <p class="text-lg mb-6">
+            <p class="text-lg mb-6 ">
                 Sistem Informasi Manajemen Bank Sampah Notoprajan adalah sistem manajemen online yang
                 diinisiasi oleh pengurus bank sampah Notoprajan. Dengan sistem ini, nasabah dan petugas
                 dapat mencatat dan memantau transaksi dengan lebih mudah, serta membantu menjaga kebersihan

@@ -29,20 +29,19 @@ include 'navbar.php'; ?>
         <h2 class="text-3xl font-bold text-center text-gray-50 mb-6" data-aos="fade-up">Fitur Utama</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <!-- Fitur 1 -->
-            <div class="bg-gray-300 p-6 rounded-lg shadow-lg text-center transition duration-300 hover:scale-105"
-                data-aos="zoom-in">
+            <div class="bg-gray-300 p-6 rounded-lg shadow-lg text-center transition duration-300 hover:scale-105">
                 <h3 class="text-xl font-semibold text-gray-900 mb-2">Input Sampah</h3>
                 <p class="text-gray-600">Pantau proses pengumpulan dan pengelolaan sampah secara real-time.</p>
             </div>
             <!-- Fitur 2 -->
             <div class="bg-gray-300 p-6 rounded-lg shadow-lg text-center transition duration-300 hover:scale-105"
-                data-aos="zoom-in" data-aos-delay="200">
+                data-aos-delay="200">
                 <h3 class="text-xl font-semibold text-gray-900 mb-2">Data Nasabah</h3>
                 <p class="text-gray-600">Kelola data nasabah yang berkontribusi dalam sistem pengelolaan sampah.</p>
             </div>
             <!-- Fitur 3 -->
             <div class="bg-gray-300 p-6 rounded-lg shadow-lg text-center transition duration-300 hover:scale-105"
-                data-aos="zoom-in" data-aos-delay="400">
+                data-aos-delay="400">
                 <h3 class="text-xl font-semibold text-gray-900 mb-2">Laporan dan Statistik</h3>
                 <p class="text-gray-600">Lihat laporan pengelolaan sampah dan analisis untuk perbaikan layanan.</p>
             </div>

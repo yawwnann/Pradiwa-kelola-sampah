@@ -12,7 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* Efek underline animasi */
         .nav-link {
@@ -87,7 +87,6 @@
         </div>
 
         <div class="flex items-center space-x-4">
-            <span class="text-lg font-semibold">Hello Admin</span>
             <a href="logout.php" class="text-gray-600 text-xl">
                 <i class="fa-solid fa-right-from-bracket"></i>
             </a>
