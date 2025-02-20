@@ -60,7 +60,7 @@ $stmt->close();
     <!-- Header -->
     <div class="bg-teal-600 mt-4 md:mt-8 p-4 md:p-6 rounded-t-lg text-white shadow-lg">
         <h1 class="text-2xl md:text-3xl font-bold text-center">
-            <i class="fas fa-database"></i> Data Sampah
+            <i class="fas fa-database"></i> Data Sampah terbaru
         </h1>
     </div>
 
@@ -114,7 +114,7 @@ $stmt->close();
                     <th class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold">Kategori</th>
                     <th class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold">Jenis Sampah
                     </th>
-                    <th class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold">Berat (kg)
+                    <th class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold">Berat(kg)
                     </th>
                     <th
                         class="border-b px-3 md:px-6 py-2 text-left text-xs md:text-sm font-semibold hidden md:table-cell">
