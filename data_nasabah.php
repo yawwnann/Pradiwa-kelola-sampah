@@ -11,7 +11,7 @@ while ($row = $result->fetch_assoc()) {
     $nasabah_data[] = $row;
 }
 ?>
-
+<!--body -->
 <body class="bg-white">
 
     <!-- Container -->
